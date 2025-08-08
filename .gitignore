@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+output/*
+!output/.gitkeep
+.env
+*.log
+
+# FAISS index files
+*.index
+
+# Large model files
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
