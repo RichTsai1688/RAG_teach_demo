@@ -229,24 +229,24 @@ export AZURE_API_KEY=your_azure_key
 Step 1. 建立資料庫，來自target網頁：
 python scripts/composite_builder_cli.py "https://www.3t.org.tw/News2.aspx?n=541&sms=47411" \
                                             --llm_provider ollama \
-                                            --ollama_url http://140.134.60.218:2116/v1 \
-                                            --ollama_model gemma3n:e4b \
+                                            --ollama_url http://localhost:11434/v1 \
+                                            --ollama_model localhost:11434 \
                                             --max_pages 10
 Step 2. 建立搜尋索引，與測試搜尋
 python scripts/rag_cli.py --embeddings output/composite_v2.json \
                     --save_index output/composite_v2_index \
                     --query "介紹一下T大使" \
                     --llm_provider ollama \
-                    --ollama_url http://140.134.60.218:2116/v1 \
-                    --ollama_model gpt-oss:20b \
+                    --ollama_url http://localhost:11434/v1 \
+                    --ollama_model gemma3:1b \
                     --top_k 5
 
 Step 3. 測試索引與測試搜尋
 python scripts/rag_cli.py --load_index output/composite_v2_index \
                     --query "介紹一下培育對象" \
                     --llm_provider ollama \
-                    --ollama_url http://140.134.60.218:2116/v1 \
-                    --ollama_model gpt-oss:20b \
+                    --ollama_url http://localhost:11434/v1 \
+                    --ollama_model gemma3:1b \
                     --top_k 10
 
 
