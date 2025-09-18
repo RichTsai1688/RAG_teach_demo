@@ -225,6 +225,31 @@ export AZURE_API_KEY=your_azure_key
 2. 索引載入失敗：確認檔案路徑和權限
 3. 網頁爬取失敗：檢查網址和網路連接
 
+使用順序：
+Step 1. 建立資料庫，來自target網頁：
+python scripts/composite_builder_cli.py "https://www.3t.org.tw/News2.aspx?n=541&sms=47411" \
+                                            --llm_provider ollama \
+                                            --ollama_url http://140.134.60.218:2116/v1 \
+                                            --ollama_model gemma3n:e4b \
+                                            --max_pages 10
+Step 2. 建立搜尋索引，與測試搜尋
+python scripts/rag_cli.py --embeddings output/composite_v2.json \
+                    --save_index output/composite_v2_index \
+                    --query "介紹一下T大使" \
+                    --llm_provider ollama \
+                    --ollama_url http://140.134.60.218:2116/v1 \
+                    --ollama_model gpt-oss:20b \
+                    --top_k 5
+
+Step 3. 測試索引與測試搜尋
+python scripts/rag_cli.py --load_index output/composite_v2_index \
+                    --query "介紹一下培育對象" \
+                    --llm_provider ollama \
+                    --ollama_url http://140.134.60.218:2116/v1 \
+                    --ollama_model gpt-oss:20b \
+                    --top_k 10
+
+
 ## 📄 授權條款
 
 MIT License
