@@ -232,7 +232,7 @@ export AZURE_API_KEY=your_azure_key
 python scripts/composite_builder_cli.py "https://www.3t.org.tw/News2.aspx?n=541&sms=47411" \
                                             --llm_provider ollama \
                                             --ollama_url http://localhost:11434/v1 \
-                                            --ollama_model localhost:11434 \
+                                            --ollama_model gemma3:1b \
                                             --max_pages 10
                                             
 ## Step 2. 建立搜尋索引，與測試搜尋
